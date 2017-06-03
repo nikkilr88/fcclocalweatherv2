@@ -4,6 +4,7 @@
 
 import React from 'react';
 import './App.css';
+import Temp from './Temp';
 
 class App extends React.Component {
     constructor(props) {
@@ -27,7 +28,11 @@ class App extends React.Component {
       url: api
     }).done(function(data) {
     // console.log(data);
-    this.setState({weatherData: data});
+    this.setState({
+        weatherData: data,
+        mainTemp: data.main.temp,
+        weatherIcon: data.icon
+    });
    
     }.bind(this));
        
@@ -41,7 +46,12 @@ class App extends React.Component {
            console.log(temp);
         }
         return (
-          <p>Temp: {temp}</p>
+        <div>
+          <Temp
+            temp={this.state.weatherData}
+            mainTemp={this.state.mainTemp}
+          />
+        </div>
         );
       }
 }
