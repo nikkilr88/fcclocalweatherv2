@@ -1,4 +1,5 @@
 .main {
+  position: relative;
   margin: 0 auto;
   padding-bottom: 10px;
   width: 250px;
@@ -26,4 +27,17 @@
 
 .f {
   display: none;
+}
+
+.c, .f {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.c:hover, .f:hover {
+  opacity: 1;
+  cursor: pointer;
 }
