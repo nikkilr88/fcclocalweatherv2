@@ -25,7 +25,7 @@ class App extends React.Component {
     "&lon=" +
     lon +
     "&units=imperial&APPID=b0006e6b1d9b6ebf1a4b8baa93e3eb5e";
-    console.log(lat, lon, api);
+
     $.ajax({ 
       url: api
     }).done(function(data) {
@@ -49,7 +49,13 @@ class App extends React.Component {
       newTemp2 = Math.round((newTemp2 - 32) * 5 / 9);
       newTemp3 = Math.round((newTemp3 - 32) * 5 / 9);
       
-      this.setState({ mainTemp: newTemp, temp1: newTemp1, temp2: newTemp2, temp3: newTemp3, deg: '°C'});
+      this.setState({ mainTemp: newTemp, 
+                      temp1: newTemp1, 
+                      temp2: newTemp2, 
+                      temp3: newTemp3, 
+                      deg: '°C'
+        
+      });
       document.getElementById("c").style.display = "none";
       document.getElementById("f").style.display = "inline";
     }
@@ -68,12 +74,6 @@ class App extends React.Component {
     }
 
       render() {
-        var temp;
-        if(this.state.weatherData) {
-           console.log('state:',this.state.weatherData);
-           temp = this.state.weatherData.main.temp;
-           console.log(temp);
-        }
         return (
         <div>
           <Temp
